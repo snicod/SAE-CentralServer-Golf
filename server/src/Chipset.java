@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Chipset {
 
-    private ObjectId id;
+    private ObjectId id; //TEST COM POUR PR
     private String name;
     private String description;
     private List<String> links;
