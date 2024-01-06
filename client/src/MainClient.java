@@ -28,6 +28,15 @@ import java.time.LocalDateTime;
    2 temperature 23.1
    2 pressure 1013
    3 voltage 5
+   Meteo to store a condition meteo
+   StatCoup to store a statistique coup
+   EtatSol to store a etat sol
+   Trou to store a trou
+   LocBalle to store a localisation balle
+   GestTrou to store a gestionnaire trou
+   CamSurv to store a camera surveillance
+   Drapeau to store a drapeau
+   Golfeur to store a golfeur
  */
 
 class MainClient  {
@@ -70,6 +79,33 @@ class MainClient  {
 					else if ("3".equals(parts[0])) {
 						requestStoreAnalysis(parts[1], parts[2]);
 					}
+					else if ("Meteo".equals(parts[0])) {
+						requestStoreConditionMeteo(parts);
+					}
+					else if ("StatCoup".equals(parts[0])) {
+						requestStoreStatistiqueCoup(parts);
+					}
+					else if ("EtatSol".equals(parts[0])) {
+						requestStoreEtatSol(parts);
+					}
+					else if("Trou".equals(parts[0])){
+						requestStoreTrou(parts);
+					}
+					else if ("LocBalle".equals(parts[0])) {
+						requestStoreLocBalle(parts);
+					}
+					else if ("GestTrou".equals(parts[0])) {
+						requestStoreGestionnaireTrous(parts);
+					}
+					else if ("CamSurv".equals(parts[0])) {
+						requestStoreCameraSurveillance(parts);
+					}
+					else if ("Drapeau".equals(parts[0])) {
+						requestStoreDrapeau(parts);
+					}
+					else if ("Golfeur".equals(parts[0])) {
+						requestStoreGolfeur(parts);
+					}
 					else if (parts[0].equals("quit")) {
 						stop = true;
 					}
@@ -91,6 +127,131 @@ class MainClient  {
 		answer = br.readLine();
 		if (answer.startsWith("ERR")) {
 			System.out.println("error with request auto-register:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreConditionMeteo(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STORECONDITIONMETEO";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store condition meteo:"+answer);
+		}
+		System.out.println(answer);
+	}
+	protected void requestStoreStatistiqueCoup(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STORESTATISTIQUECOUP";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store statistique coup:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreEtatSol(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STOREETATSOL";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store etat sol:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreTrou(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STORETROU";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store trou:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreLocBalle(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STORELOCBALLE";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store localisation balle:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreGestionnaireTrous(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STOREGESTIONNAIRETROUS";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store gestionnaire trous:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreCameraSurveillance(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STORECAMERASURVEILLANCE";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store camera surveillance:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreDrapeau(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STOREDRAPEAU";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if (answer.startsWith("ERR")) {
+			System.out.println("error with store drapeau:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreGolfeur(String[] params) throws IOException {
+
+		String answer="";
+		String req = "STOREGOLFEUR";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+		if(answer.startsWith("ERR")) {
+			System.out.println("error with store golfeur:"+answer);
 		}
 		System.out.println(answer);
 	}
