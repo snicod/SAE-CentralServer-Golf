@@ -57,6 +57,8 @@ public class MongoDataDriver implements DataDriver {
 
     MongoCollection<LocalisationBalle> localisationBalles;
 
+    MongoCollection<ImageDrapeau> imageDrapeaux;
+
     public MongoDataDriver(String mongoURL) {
         this.mongoURL = mongoURL;
         pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
@@ -79,6 +81,7 @@ public class MongoDataDriver implements DataDriver {
             etatSols = database.getCollection("etatsols", EtatSol.class);
             gestionnaireTrous = database.getCollection("gestionnairetrous", GestionnaireTrous.class);
             localisationBalles = database.getCollection("localisationballes", LocalisationBalle.class);
+            imageDrapeaux = database.getCollection("imagedrapeauxes", ImageDrapeau.class);
         }
         catch(IllegalArgumentException e) {
             return false;
@@ -240,6 +243,12 @@ public class MongoDataDriver implements DataDriver {
     public synchronized String saveGolfeur(String nom, String prenom, String email, String motDePasse) {
         Golfeur g = new Golfeur(nom, prenom, email, motDePasse);
         golfeurs.insertOne(g);
+        return "OK";
+    }
+
+    public synchronized String saveImageDrapeau(int distance) {
+        ImageDrapeau i = new ImageDrapeau(distance);
+        imageDrapeaux.insertOne(i);
         return "OK";
     }
 }

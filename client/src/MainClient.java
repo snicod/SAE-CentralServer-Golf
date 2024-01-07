@@ -106,6 +106,9 @@ class MainClient  {
 					else if ("Golfeur".equals(parts[0])) {
 						requestStoreGolfeur(parts);
 					}
+					else if("Image".equals(parts[0])){
+						requestStoreImageDrapeau(parts);
+					}
 					else if (parts[0].equals("quit")) {
 						stop = true;
 					}
@@ -252,6 +255,20 @@ class MainClient  {
 		answer = br.readLine();
 		if(answer.startsWith("ERR")) {
 			System.out.println("error with store golfeur:"+answer);
+		}
+		System.out.println(answer);
+	}
+
+	protected void requestStoreImageDrapeau(String[] params) throws IOException {
+		String answer="";
+		String req = "STOREIMAGEDRAPEAU";
+		for(int i=1;i<params.length;i++) req = req+" "+params[i];
+		System.out.println(req);
+		ps.println(req);
+		answer = br.readLine();
+
+		if(answer.startsWith("ERR")) {
+			System.out.println("error with store image drapeau:"+answer);
 		}
 		System.out.println(answer);
 	}

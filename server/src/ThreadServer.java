@@ -85,6 +85,9 @@ class ThreadServer extends Thread {
 				else if("STOREGOLFEUR".equals(idReq)){
 					requestStoreGolfeur(reqParts);
 				}
+				else if ("STOREIMAGEDRAPEAU".equals(idReq)) {
+					requestStoreImageDrapeau(reqParts);
+				}
 				else {
 					ps.println("ERR unknown request");
 				}
@@ -267,6 +270,22 @@ class ThreadServer extends Thread {
 		// (un)comment to choose direct mongo access or through the node API
 		//String answer = exchanger.getMongoDriver().saveGolfeur(params[1], params[2], params[3], params[4]);*
 		String answer = exchanger.getHttpDriver().saveGolfeur(params[1], params[2], params[3], params[4]);
+		System.out.println(answer);
+		ps.println(answer);
+	}
+
+	protected void requestStoreImageDrapeau(String[] params) throws IOException {
+		System.out.println("processing request STORE IMAGE DRAPEAU");
+
+		if (params.length != 2) {
+			ps.println("ERR invalid number of parameters");
+			return;
+		}
+
+		int distance = Integer.parseInt(params[1]);
+		// (un)comment to choose direct mongo access or through the node API
+		//String answer = exchanger.getMongoDriver().saveImageDrapeau(distance);*
+		String answer = exchanger.getHttpDriver().saveImageDrapeau(distance);
 		System.out.println(answer);
 		ps.println(answer);
 	}

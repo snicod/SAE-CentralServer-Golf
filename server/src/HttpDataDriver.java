@@ -49,12 +49,13 @@ public class HttpDataDriver implements DataDriver {
         }
         return doc;
     }
-    private Document getRequest(String route) {
+
+    private Document patchRequest(String route, String payload) {
         Document doc = null;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(apiURL+route))
                 .header("Content-Type", "application/json")
-                .method("GET",HttpRequest.BodyPublishers.noBody())
+                .method("PATCH",HttpRequest.BodyPublishers.ofString(payload))
                 .build();
         try {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -70,6 +71,7 @@ public class HttpDataDriver implements DataDriver {
         }
         return doc;
     }
+
 
     public synchronized String autoRegisterModule(String uc, List<String> chipsets) {
         String payload = "{\"uc\": \""+uc+"\", \"chipsets\": [";
@@ -136,6 +138,11 @@ public class HttpDataDriver implements DataDriver {
     public synchronized String saveGolfeur(String nom, String prenom, String email, String motDePasse) {
         String payload = "{\"nom\": \"" + nom + "\", \"prenom\": \"" + prenom + "\", \"email\": \"" + email + "\", \"mot_de_passe\": \"" + motDePasse + "\"}";
         return sendGolfeur(payload);
+    }
+
+    public synchronized String saveImageDrapeau(int distance) {
+        String payload = "{\"distance_estimee\": " + distance + "}";
+        return sendImageDrapeau(payload);
     }
 
     public synchronized  String saveMeasure(String type, String date, String value, String moduleKey) {
@@ -246,5 +253,12 @@ public class HttpDataDriver implements DataDriver {
         return err;
     }
 
-
+    private String sendImageDrapeau(String payload) {
+        Document doc = postRequest("/imageDrapeau/create", payload);
+        if (doc == null) {
+            return "ERR cannot join the API";
+        }
+        String err = checkError(doc);
+        return err;
+    }
 }

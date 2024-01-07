@@ -29,5 +29,5 @@ public interface DataDriver {
 
     String saveGolfeur(String nom, String prenom, String email, String motDePasse);
 
-
+    String saveImageDrapeau(int distance);
 }
