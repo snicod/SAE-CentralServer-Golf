@@ -151,18 +151,21 @@ class ThreadServer extends Thread {
 	protected void requestStoreStatistiqueCoup(String[] params) throws IOException {
 		System.out.println("processing request STORE STATISTIQUE COUP");
 
-		if (params.length != 5) {
+		if (params.length != 10) {
 			ps.println("ERR invalid number of parameters");
 			return;
 		}
 
-		int vitesse = Integer.parseInt(params[2]);
-		int trajectoire = Integer.parseInt(params[3]);
-
+		int vitesse = Integer.parseInt(params[3]);
+		int trajectoire = Integer.parseInt(params[4]);
+		int latitudeDepart = Integer.parseInt(params[6]);
+		int longitudeDepart = Integer.parseInt(params[7]);
+		int latitudeArrivee = Integer.parseInt(params[8]);
+		int longitudeArrivee = Integer.parseInt(params[9]);
 
 		// (un)comment to choose direct mongo access or through the node API
-		//String answer = exchanger.getMongoDriver().saveStatistiqueCoup(params[1], vitesse, trajectoire, params[4]);*
-		String answer = exchanger.getHttpDriver().saveStatistiqueCoup(params[1], vitesse, trajectoire, params[4]);
+		//String answer = exchanger.getMongoDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);*
+		String answer = exchanger.getHttpDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);
 		System.out.println(answer);
 		ps.println(answer);
 	}
@@ -282,7 +285,7 @@ class ThreadServer extends Thread {
 			return;
 		}
 
-		int distance = Integer.parseInt(params[1]);
+		double distance = Integer.parseInt(params[1]);
 		// (un)comment to choose direct mongo access or through the node API
 		//String answer = exchanger.getMongoDriver().saveImageDrapeau(distance);*
 		String answer = exchanger.getHttpDriver().saveImageDrapeau(distance);

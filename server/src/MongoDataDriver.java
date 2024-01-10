@@ -199,8 +199,8 @@ public class MongoDataDriver implements DataDriver {
         conditions.insertOne(c);
         return "OK";
     }
-    public synchronized String saveStatistiqueCoup(String golfeurId, int vitesse, int trajectoire, String conseils) {
-        StatistiqueCoup s = new StatistiqueCoup(getGolfeurId(golfeurId), vitesse, trajectoire, conseils);
+    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee) {
+        StatistiqueCoup s = new StatistiqueCoup(getGolfeurId(golfeurId), getTrouId(trouId), vitesse, trajectoire, conseils, latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);
         statistiqueCoup.insertOne(s);
         return "OK";
     }
@@ -246,7 +246,7 @@ public class MongoDataDriver implements DataDriver {
         return "OK";
     }
 
-    public synchronized String saveImageDrapeau(int distance) {
+    public synchronized String saveImageDrapeau(double distance) {
         ImageDrapeau i = new ImageDrapeau(distance);
         imageDrapeaux.insertOne(i);
         return "OK";

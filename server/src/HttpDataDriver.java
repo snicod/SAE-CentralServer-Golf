@@ -103,10 +103,11 @@ public class HttpDataDriver implements DataDriver {
         String payload = "{\"trou_id\": \"" + trouId + "\", \"date\": \"" + date + "\", \"temperature\": " + temperature + ", \"humidite\": " + humidite + ", \"vent\": {\"vitesse\": " + vitesseVent + ", \"direction\": \"" + directionVent + "\"}}";
         return sendConditionMeteo(payload);
     }
-    public synchronized String saveStatistiqueCoup(String golfeurId, int vitesse, int trajectoire, String conseils) {
-        String payload = "{\"golfeur_id\": \"" + golfeurId + "\", \"vitesse\": " + vitesse + ", \"trajectoire\": " + trajectoire + ", \"conseils\": \"" + conseils + "\"}";
+    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee) {
+        String payload = "{\"golfeur_id\": \"" + golfeurId + "\", \"trou_id\": \"" + trouId + "\", \"vitesse\": " + vitesse + ", \"trajectoire\": " + trajectoire + ", \"conseils\": \"" + conseils + "\", \"latitude_depart\": " + latitudeDepart + ", \"longitude_depart\": " + longitudeDepart + ", \"latitude_arrivee\": " + latitudeArrivee + ", \"longitude_arrivee\": " + longitudeArrivee + ", \"date\": \"\"}";
         return sendStatistiqueCoup(payload);
     }
+
     public synchronized String saveEtatSol(String trouId, String date, String densiteHerbe, String qualiteNutriments, int humiditeSol) {
         String payload = "{\"trou_id\": \"" + trouId + "\", \"date\": \"" + date + "\", \"densite_herbe\": \"" + densiteHerbe + "\", \"qualite_nutriments\": \"" + qualiteNutriments + "\", \"humidite_sol\": " + humiditeSol + "}";
         return sendEtatSol(payload);
@@ -140,7 +141,7 @@ public class HttpDataDriver implements DataDriver {
         return sendGolfeur(payload);
     }
 
-    public synchronized String saveImageDrapeau(int distance) {
+    public synchronized String saveImageDrapeau(double distance) {
         String payload = "{\"distance_estimee\": " + distance + "}";
         return sendImageDrapeau(payload);
     }

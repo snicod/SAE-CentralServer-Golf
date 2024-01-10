@@ -3,11 +3,11 @@ import org.bson.types.ObjectId;
 public class ImageDrapeau {
 
     private ObjectId id;
-    private int distanceEstimee;
+    private double distanceEstimee;
 
     public ImageDrapeau() {}
 
-    public ImageDrapeau(int distanceEstimee) {
+    public ImageDrapeau(double distanceEstimee) {
         this.distanceEstimee = distanceEstimee;
     }
 
@@ -19,11 +19,11 @@ public class ImageDrapeau {
         this.id = id;
     }
 
-    public int getDistanceEstimee() {
+    public double getDistanceEstimee() {
         return distanceEstimee;
     }
 
-    public void setDistanceEstimee(int distanceEstimee) {
+    public void setDistanceEstimee(double distanceEstimee) {
         this.distanceEstimee = distanceEstimee;
     }
 
