@@ -13,7 +13,7 @@ public interface DataDriver {
 
     String saveConditionMeteo(String trouId, String date, int temperature, int humidite, int vitesseVent, String directionVent);
 
-    String saveStatistiqueCoup(String golfeurId, int vitesse, int trajectoire, String conseils);
+    String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee);
 
     String saveEtatSol(String trouId, String date, String densiteHerbe, String qualiteNutriments, int humiditeSol);
 
@@ -29,5 +29,5 @@ public interface DataDriver {
 
     String saveGolfeur(String nom, String prenom, String email, String motDePasse);
 
-    String saveImageDrapeau(int distance);
+    String saveImageDrapeau(double distance);
 }
