@@ -16,9 +16,13 @@ public class StatistiqueCoup {
     private double latitudeArrivee;
     private double longitudeArrivee;
 
+    private double accelerationX;
+
+    private double accelerationY;
+
     public StatistiqueCoup() {}
 
-    public StatistiqueCoup(ObjectId golfeurId, ObjectId trouId, int vitesse, int trajectoire, String conseils, double latitudeDepart, double longitudeDepart, double latitudeArrivee, double longitudeArrivee) {
+    public StatistiqueCoup(ObjectId golfeurId, ObjectId trouId, int vitesse, int trajectoire, String conseils, double latitudeDepart, double longitudeDepart, double latitudeArrivee, double longitudeArrivee, double accelerationX, double accelerationY) {
         this.golfeurId = golfeurId;
         this.trouId = trouId;
         this.date = new Date().toString();
@@ -29,6 +33,8 @@ public class StatistiqueCoup {
         this.longitudeDepart = longitudeDepart;
         this.latitudeArrivee = latitudeArrivee;
         this.longitudeArrivee = longitudeArrivee;
+        this.accelerationX = accelerationX;
+        this.accelerationY = accelerationY;
     }
 
     public ObjectId getId() {
@@ -119,7 +125,23 @@ public class StatistiqueCoup {
         this.longitudeArrivee = longitudeArrivee;
     }
 
+    public double getAccelerationX() {
+        return accelerationX;
+    }
+
+    public void setAccelerationX(double accelerationX) {
+        this.accelerationX = accelerationX;
+    }
+
+    public double getAccelerationY() {
+        return accelerationY;
+    }
+
+    public void setAccelerationY(double accelerationY) {
+        this.accelerationY = accelerationY;
+    }
+
     public String toString() {
-        return id + " " + golfeurId + " " + trouId + " " + date + " " + vitesse + " " + trajectoire + " " + conseils + " " + latitudeDepart + " " + longitudeDepart + " " + latitudeArrivee + " " + longitudeArrivee;
+        return id + " " + golfeurId + " " + trouId + " " + date + " " + vitesse + " " + trajectoire + " " + conseils + " " + latitudeDepart + " " + longitudeDepart + " " + latitudeArrivee + " " + longitudeArrivee + " " + accelerationX + " " + accelerationY;
     }
 }

@@ -151,7 +151,7 @@ class ThreadServer extends Thread {
 	protected void requestStoreStatistiqueCoup(String[] params) throws IOException {
 		System.out.println("processing request STORE STATISTIQUE COUP");
 
-		if (params.length != 10) {
+		if (params.length != 12) {
 			ps.println("ERR invalid number of parameters");
 			return;
 		}
@@ -162,10 +162,13 @@ class ThreadServer extends Thread {
 		int longitudeDepart = Integer.parseInt(params[7]);
 		int latitudeArrivee = Integer.parseInt(params[8]);
 		int longitudeArrivee = Integer.parseInt(params[9]);
+		int accelerationX = Integer.parseInt(params[10]);
+		int accelerationY = Integer.parseInt(params[11]);
+
 
 		// (un)comment to choose direct mongo access or through the node API
-		//String answer = exchanger.getMongoDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);*
-		String answer = exchanger.getHttpDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);
+		//String answer = exchanger.getMongoDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee, accelerationX, accelerationY);*
+		String answer = exchanger.getHttpDriver().saveStatistiqueCoup(params[1], params[2], vitesse, trajectoire, params[5], latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee, accelerationX, accelerationY);
 		System.out.println(answer);
 		ps.println(answer);
 	}

@@ -199,8 +199,8 @@ public class MongoDataDriver implements DataDriver {
         conditions.insertOne(c);
         return "OK";
     }
-    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee) {
-        StatistiqueCoup s = new StatistiqueCoup(getGolfeurId(golfeurId), getTrouId(trouId), vitesse, trajectoire, conseils, latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee);
+    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee, int accelerationX, int accelerationY) {
+        StatistiqueCoup s = new StatistiqueCoup(getGolfeurId(golfeurId), getTrouId(trouId), vitesse, trajectoire, conseils, latitudeDepart, longitudeDepart, latitudeArrivee, longitudeArrivee, accelerationX, accelerationY);
         statistiqueCoup.insertOne(s);
         return "OK";
     }
