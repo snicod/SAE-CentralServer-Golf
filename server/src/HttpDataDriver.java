@@ -103,8 +103,8 @@ public class HttpDataDriver implements DataDriver {
         String payload = "{\"trou_id\": \"" + trouId + "\", \"date\": \"" + date + "\", \"temperature\": " + temperature + ", \"humidite\": " + humidite + ", \"vent\": {\"vitesse\": " + vitesseVent + ", \"direction\": \"" + directionVent + "\"}}";
         return sendConditionMeteo(payload);
     }
-    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee) {
-        String payload = "{\"golfeur_id\": \"" + golfeurId + "\", \"trou_id\": \"" + trouId + "\", \"vitesse\": " + vitesse + ", \"trajectoire\": " + trajectoire + ", \"conseils\": \"" + conseils + "\", \"latitude_depart\": " + latitudeDepart + ", \"longitude_depart\": " + longitudeDepart + ", \"latitude_arrivee\": " + latitudeArrivee + ", \"longitude_arrivee\": " + longitudeArrivee + ", \"date\": \"\"}";
+    public synchronized String saveStatistiqueCoup(String golfeurId, String trouId, int vitesse, int trajectoire, String conseils, int latitudeDepart, int longitudeDepart, int latitudeArrivee, int longitudeArrivee, int accelerationX, int accelerationY) {
+        String payload = "{\"golfeur_id\": \"" + golfeurId + "\", \"trou_id\": \"" + trouId + "\", \"vitesse\": " + vitesse + ", \"trajectoire\": " + trajectoire + ", \"conseils\": \"" + conseils + "\", \"latitude_depart\": " + latitudeDepart + ", \"longitude_depart\": " + longitudeDepart + ", \"latitude_arrivee\": " + latitudeArrivee + ", \"longitude_arrivee\": " + longitudeArrivee + ", \"acceleration_x\": " + accelerationX + ", \"acceleration_y\": " + accelerationY + "}";
         return sendStatistiqueCoup(payload);
     }
 
