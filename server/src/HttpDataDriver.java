@@ -251,7 +251,8 @@ public class HttpDataDriver implements DataDriver {
             return "ERR cannot join the API";
         }
         String err = checkError(doc);
-        return err;
+        if (err != null) return err;
+        return "OK";
     }
 
     private String sendImageDrapeau(String payload) {
@@ -260,6 +261,7 @@ public class HttpDataDriver implements DataDriver {
             return "ERR cannot join the API";
         }
         String err = checkError(doc);
-        return err;
+        if (err != null) return err;
+        return "OK";
     }
 }
