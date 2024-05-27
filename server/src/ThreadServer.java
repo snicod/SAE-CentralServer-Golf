@@ -288,7 +288,7 @@ class ThreadServer extends Thread {
 			return;
 		}
 
-		double distance = Integer.parseInt(params[1]);
+		double distance = Double.parseDouble(params[1]);
 		// (un)comment to choose direct mongo access or through the node API
 		//String answer = exchanger.getMongoDriver().saveImageDrapeau(distance);*
 		String answer = exchanger.getHttpDriver().saveImageDrapeau(distance);
